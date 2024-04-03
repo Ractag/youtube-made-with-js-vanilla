@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: #0f0f0f;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 2rem;
+}
+
+.menu-burger {
+  padding-top: 0.6rem;
+  margin-right: 1rem;
+}
+
+.menu-burger-img {
+  width: 18px;
+}
+
+.yt-logo {
+  width: 100px;
+}
+
+.search-input {
+  border-radius: 25px 0px 0px 25px;
+}
+
+.mic-img-div {
+  margin-left: 1rem;
+}
+
+.mic-img {
+  height: 40px;
+  border-radius: 50%;
+}
+
+.cam-img {
+  width: 20px;
+}
+
+.notif-img {
+  width: 20px;
+}
+
+.notif-img-div {
+  margin: 0rem 2rem;
+}
+
+.profile-picture-icon {
+  width: 20px;
+}
+
+.search-input {
+  border: solid #222222;
+  padding: 1rem;
+}
+
+.search-btn {
+  border: none;
+  background-color: #222222;
+  border-radius: 0px 25px 25px 0px;
+  padding-right: 1rem;
+}
+
+.search-btn-icon {
+  width: 20px;
+}
+
+.input-btn {
+  display: flex;
+  height: 40px;
+}
+
+.logo-menu,
+.input-btn,
+.user-icons {
+  display: flex;
+}
