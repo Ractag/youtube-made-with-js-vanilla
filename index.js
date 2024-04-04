@@ -46,3 +46,23 @@ searchBtnIcon.src = "assets/images/search.png";
 
 const searchBtnDiv = document.querySelector(".search-btn");
 searchBtnDiv.appendChild(searchBtnIcon);
+
+const cardContainer = document.querySelector(".card-container");
+fetch("data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((video) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+      <h1>${video.name}</h1>
+      <h2>${video.autor}</h2>
+      <h3>${video.view}</h3>
+      <h4>${video.description}</h4>
+      `;
+
+      cardContainer.appendChild(card);
+    });
+  });
