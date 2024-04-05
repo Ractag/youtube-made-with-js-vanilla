@@ -51,18 +51,46 @@ const cardContainer = document.querySelector(".card-container");
 fetch("data.json")
   .then((response) => response.json())
   .then((data) => {
+    // card creation
     data.forEach((video) => {
       const card = document.createElement("div");
       card.className = "card";
 
       card.innerHTML = `
       <img class="card-img" src="${video.image}" alt="${video.name}">
-      <h1>${video.name}</h1>
-      <h2>${video.autor}</h2>
-      <h3>${video.view}</h3>
-      <h4>${video.description}</h4>
-      `;
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
 
       cardContainer.appendChild(card);
+    });
+    // Listening changes on input
+    const input = document.querySelector("input");
+    // research changes the text to upper case and skips useless spaces
+    input.addEventListener("input", (text) => {
+      const research = text.target.value.toUpperCase().trim();
+      // filteredVideos return the videos with filters applied
+      const filteredVideos = data.filter((video) => {
+        return video.name.toUpperCase().includes(research);
+      });
+      // Empties cardContainer so it can receive filtered data
+      cardContainer.innerHTML = "";
+      // Create card after being filtered
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
+
+        cardContainer.appendChild(card);
+      });
     });
   });
