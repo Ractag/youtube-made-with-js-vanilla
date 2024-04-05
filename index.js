@@ -213,8 +213,9 @@ fetch("data.json")
       cardContainer.innerHTML = "";
 
       const filteredVideos = data.sort((a, b) => {
-        const viewA = parseInt(a.view.match(/\d+/)[0]);
-        const viewB = parseInt(b.view.match(/\d+/)[0]);
+        const regex = "/d+/)[0]";
+        const viewA = parseInt(a.view.match(regex));
+        const viewB = parseInt(b.view.match(regex));
         return viewB - viewA;
       });
 
