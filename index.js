@@ -93,15 +93,20 @@ fetch("data.json")
         cardContainer.appendChild(card);
       });
     });
-
+    // Filters
     const noFilterActive = document.querySelector(".all");
     const filterButtonCute = document.querySelector(".cute");
     const filterButtonGoofy = document.querySelector(".goofy");
     const filterButtonLove = document.querySelector(".love");
     const filterButtonGang = document.querySelector(".gang");
+    const filterPerView = document.querySelector(".view");
 
     noFilterActive.addEventListener("click", () => {
-      data.forEach((video) => {
+      cardContainer.innerHTML = "";
+
+      const shuffledData = shuffle(data);
+
+      shuffledData.forEach((video) => {
         const card = document.createElement("div");
         card.className = "card";
 
@@ -118,11 +123,11 @@ fetch("data.json")
     });
 
     filterButtonCute.addEventListener("click", () => {
+      cardContainer.innerHTML = "";
+
       const filteredVideos = data.filter((video) => {
         return video.filter.includes("cute");
       });
-
-      cardContainer.innerHTML = "";
 
       filteredVideos.forEach((video) => {
         const card = document.createElement("div");
@@ -141,11 +146,11 @@ fetch("data.json")
     });
 
     filterButtonGoofy.addEventListener("click", () => {
+      cardContainer.innerHTML = "";
+
       const filteredVideos = data.filter((video) => {
         return video.filter.includes("goofy");
       });
-
-      cardContainer.innerHTML = "";
 
       filteredVideos.forEach((video) => {
         const card = document.createElement("div");
@@ -164,11 +169,11 @@ fetch("data.json")
     });
 
     filterButtonLove.addEventListener("click", () => {
+      cardContainer.innerHTML = "";
+
       const filteredVideos = data.filter((video) => {
         return video.filter.includes("love");
       });
-
-      cardContainer.innerHTML = "";
 
       filteredVideos.forEach((video) => {
         const card = document.createElement("div");
@@ -187,11 +192,11 @@ fetch("data.json")
     });
 
     filterButtonGang.addEventListener("click", () => {
+      cardContainer.innerHTML = "";
+
       const filteredVideos = data.filter((video) => {
         return video.filter.includes("gang");
       });
-
-      cardContainer.innerHTML = "";
 
       filteredVideos.forEach((video) => {
         const card = document.createElement("div");
@@ -208,4 +213,50 @@ fetch("data.json")
         cardContainer.appendChild(card);
       });
     });
+
+    // Filter
+
+    filterPerView.addEventListener("click", () => {
+      cardContainer.innerHTML = "";
+
+      const filteredVideos = data.sort((a, b) => {
+        const viewA = parseInt(a.view.match(/\d+/)[0]);
+        const viewB = parseInt(b.view.match(/\d+/)[0]);
+        return viewB - viewA;
+      });
+
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
+
+        cardContainer.appendChild(card);
+      });
+    });
+
+    // Shuffles an array
+    function shuffle(data) {
+      let currentIndex = data.length;
+
+      // While there remain elements to shuffle...
+      while (currentIndex != 0) {
+        // Pick a remaining element...
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [data[currentIndex], data[randomIndex]] = [
+          data[randomIndex],
+          data[currentIndex],
+        ];
+      }
+      return data;
+    }
   });
