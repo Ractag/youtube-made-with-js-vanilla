@@ -241,13 +241,13 @@ fetch("data.json")
       });
     });
 
-    // Shuffles an array
+    // Shuffles an array (Fisher-Yates algorythm)
     function shuffle(data) {
       let currentIndex = data.length;
 
-      // While there remain elements to shuffle...
+      // this while loop means if there is still elements in the array, it will iterate on it until there is no more
       while (currentIndex != 0) {
-        // Pick a remaining element...
+        // randomize the index of "currenIndex"
         let randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
 
