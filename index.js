@@ -93,4 +93,119 @@ fetch("data.json")
         cardContainer.appendChild(card);
       });
     });
+
+    const noFilterActive = document.querySelector(".all");
+    const filterButtonCute = document.querySelector(".cute");
+    const filterButtonGoofy = document.querySelector(".goofy");
+    const filterButtonLove = document.querySelector(".love");
+    const filterButtonGang = document.querySelector(".gang");
+
+    noFilterActive.addEventListener("click", () => {
+      data.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
+
+        cardContainer.appendChild(card);
+      });
+    });
+
+    filterButtonCute.addEventListener("click", () => {
+      const filteredVideos = data.filter((video) => {
+        return video.filter.includes("cute");
+      });
+
+      cardContainer.innerHTML = "";
+
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
+
+        cardContainer.appendChild(card);
+      });
+    });
+
+    filterButtonGoofy.addEventListener("click", () => {
+      const filteredVideos = data.filter((video) => {
+        return video.filter.includes("goofy");
+      });
+
+      cardContainer.innerHTML = "";
+
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
+
+        cardContainer.appendChild(card);
+      });
+    });
+
+    filterButtonLove.addEventListener("click", () => {
+      const filteredVideos = data.filter((video) => {
+        return video.filter.includes("love");
+      });
+
+      cardContainer.innerHTML = "";
+
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
+
+        cardContainer.appendChild(card);
+      });
+    });
+
+    filterButtonGang.addEventListener("click", () => {
+      const filteredVideos = data.filter((video) => {
+        return video.filter.includes("gang");
+      });
+
+      cardContainer.innerHTML = "";
+
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       <h4>${video.description}</h4>
+       `;
+
+        cardContainer.appendChild(card);
+      });
+    });
   });
