@@ -61,7 +61,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
       cardContainer.appendChild(card);
@@ -87,7 +86,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
         cardContainer.appendChild(card);
@@ -115,7 +113,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
         cardContainer.appendChild(card);
@@ -138,7 +135,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
         cardContainer.appendChild(card);
@@ -161,7 +157,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
         cardContainer.appendChild(card);
@@ -184,7 +179,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
         cardContainer.appendChild(card);
@@ -207,7 +201,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
         cardContainer.appendChild(card);
@@ -234,7 +227,6 @@ fetch("data.json")
        <h1>${video.name}</h1>
        <h2>${video.autor}</h2>
        <h3>${video.view}</h3>
-       <h4>${video.description}</h4>
        `;
 
         cardContainer.appendChild(card);

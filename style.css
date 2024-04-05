@@ -3,6 +3,19 @@
   margin: 0;
   background-color: #0f0f0f;
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0.4rem 0;
+}
+
+h2,
+h3 {
+  font-size: 14px;
+  color: #a0a0a0;
+  font-weight: 100;
 }
 
 header {
