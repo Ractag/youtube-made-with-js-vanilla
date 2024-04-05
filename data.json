@@ -2,7 +2,7 @@
   {
     "id": 1,
     "image": "assets/images/cutekitty1.jpg",
-    "name": "Vidéo 1",
+    "name": "Petit Miaou",
     "view": "214 vues · il y a 4 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "image": "assets/images/cutekitty2.jpg",
-    "name": "Vidéo 2",
+    "name": "Mlem",
     "view": "654 vues · il y a 4 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "image": "assets/images/cutekitty3.jpg",
-    "name": "Vidéo 3",
+    "name": "St Valentin",
     "view": "76483 vues · il y a 6 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "image": "assets/images/cutekitty4.jpg",
-    "name": "Vidéo 4",
+    "name": "Heehee",
     "view": "645748 vues · il y a 6 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -34,7 +34,7 @@
   {
     "id": 5,
     "image": "assets/images/cutekitty5.jpg",
-    "name": "Vidéo 5",
+    "name": "Love me pls",
     "view": "4367 vues · il y a 2 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -42,7 +42,7 @@
   {
     "id": 6,
     "image": "assets/images/cutekitty6.jpg",
-    "name": "Vidéo 6",
+    "name": "Study & chill",
     "view": "9876 vues · il y a 3 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -50,7 +50,7 @@
   {
     "id": 7,
     "image": "assets/images/cutekitty7.jpg",
-    "name": "Vidéo 7",
+    "name": "U want sum?",
     "view": "2469 vues · il y a 1 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -58,7 +58,7 @@
   {
     "id": 8,
     "image": "assets/images/cutekitty8.jpg",
-    "name": "Vidéo 8",
+    "name": "2pac",
     "view": "3295 vues · il y a 1 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -66,7 +66,7 @@
   {
     "id": 9,
     "image": "assets/images/cutekitty9.jpg",
-    "name": "Vidéo 9",
+    "name": "Orange mf",
     "view": "436936 vues · il y a 12 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
@@ -74,7 +74,7 @@
   {
     "id": 10,
     "image": "assets/images/cutekitty10.jpg",
-    "name": "Vidéo 10",
+    "name": "F you",
     "view": "123567 vues · il y a 1 ans",
     "autor": "Auteur de la vidéo",
     "description": "Ceci est une description"
