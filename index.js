@@ -91,7 +91,7 @@ fetch("data.json")
         cardContainer.appendChild(card);
       });
     });
-    // Filters
+    // Filter buttons
     const noFilterActive = document.querySelector(".all");
     const filterButtonCute = document.querySelector(".cute");
     const filterButtonGoofy = document.querySelector(".goofy");
@@ -208,7 +208,7 @@ fetch("data.json")
       });
     });
 
-    // Filter
+    // Randomize videos (All filter button)
 
     filterPerView.addEventListener("click", () => {
       cardContainer.innerHTML = "";
@@ -234,6 +234,26 @@ fetch("data.json")
         cardContainer.appendChild(card);
       });
     });
+
+    filterPerAutor.addEventListener("click", () => {
+      cardContainer.innerHTML = "";
+      
+      const filteredVideos = data.sort((a, b) => a.autor.localeCompare(b.autor));
+
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       `;
+
+        cardContainer.appendChild(card);
+      })
+    })
 
     // Shuffles an array (Fisher-Yates algorythm)
     function shuffle(data) {
