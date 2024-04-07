@@ -98,6 +98,7 @@ fetch("data.json")
     const filterButtonLove = document.querySelector(".love");
     const filterButtonGang = document.querySelector(".gang");
     const filterPerView = document.querySelector(".view");
+    const filterPerAutor = document.querySelector(".autor");
 
     noFilterActive.addEventListener("click", () => {
       cardContainer.innerHTML = "";
@@ -213,9 +214,9 @@ fetch("data.json")
       cardContainer.innerHTML = "";
 
       const filteredVideos = data.sort((a, b) => {
-        const regex = "/d+/)[0]";
-        const viewA = parseInt(a.view.match(regex));
-        const viewB = parseInt(b.view.match(regex));
+        const regex = /\d+/;
+        const viewA = parseInt(a.view.match(regex)[0]);
+        const viewB = parseInt(b.view.match(regex)[0]);
         return viewB - viewA;
       });
 
