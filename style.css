@@ -148,10 +148,7 @@ header {
   font-size: 10px;
 }
 
-.home-img-and-text,
-.shorts-img-and-text,
-.subscriptions-img-and-text,
-.you-img-and-text {
+.lateral-menu-and-card-container > * {
   margin: 0 0.5rem;
 }
 
