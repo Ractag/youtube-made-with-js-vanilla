@@ -66,18 +66,23 @@ fetch("data.json")
       cardContainer.appendChild(card);
     });
     // Listening changes on input
-    const input = document.querySelector("input");
-    // research changes the text to upper case and skips useless spaces
-    input.addEventListener("input", (text) => {
-      const research = text.target.value.toUpperCase().trim();
-      // filteredVideos return the videos with filters applied
-      const filteredVideos = data.filter((video) => {
-        return video.name.toUpperCase().includes(research);
-      });
-      // Empties cardContainer so it can receive filtered data
+
+    let inputText = "";
+    const searchBar = document.querySelector(".search-input");
+    searchBar.addEventListener("change", (event) => {
+      inputText = event.target.value;
+    });
+
+    const searchBtn = document.querySelector(".search-btn");
+    searchBtn.addEventListener("click", () => {
       cardContainer.innerHTML = "";
-      // Create card after being filtered
-      filteredVideos.forEach((video) => {
+
+      const formatedSearch = inputText.toUpperCase().trim();
+      const compareSearchAndData = data.filter((video) => {
+        return video.name.toUpperCase().includes(formatedSearch);
+      });
+
+      compareSearchAndData.forEach((video) => {
         const card = document.createElement("div");
         card.className = "card";
 
@@ -89,8 +94,47 @@ fetch("data.json")
        `;
 
         cardContainer.appendChild(card);
+
+        // formatedSearch.forEach((video) => {
+        //   const card = document.createElement("div");
+        //   card.className = "card";
+
+        //   card.innerHTML = `
+        //   <img class="card-img" src="${video.image}" alt="${video.name}">
+        //   <h1>${video.name}</h1>
+        //   <h2>${video.autor}</h2>
+        //   <h3>${video.view}</h3>
+        //   `;
+
+        //   cardContainer.appendChild(card);
       });
     });
+
+    // const input = document.querySelector("input");
+    // // research changes the text to upper case and skips useless spaces
+    // input.addEventListener("input", (text) => {
+    //   const research = text.target.value.toUpperCase().trim();
+    //   // filteredVideos return the videos with filters applied
+    //   const filteredVideos = data.filter((video) => {
+    //     return video.name.toUpperCase().includes(research);
+    //   });
+    //   // Empties cardContainer so it can receive filtered data
+    //   cardContainer.innerHTML = "";
+    //   // Create card after being filtered
+    //   filteredVideos.forEach((video) => {
+    //     const card = document.createElement("div");
+    //     card.className = "card";
+
+    //     card.innerHTML = `
+    //   <img class="card-img" src="${video.image}" alt="${video.name}">
+    //    <h1>${video.name}</h1>
+    //    <h2>${video.autor}</h2>
+    //    <h3>${video.view}</h3>
+    //    `;
+
+    //     cardContainer.appendChild(card);
+    //   });
+    // });
     // Filter buttons
     const noFilterActive = document.querySelector(".all");
     const filterButtonCute = document.querySelector(".cute");
@@ -208,6 +252,28 @@ fetch("data.json")
       });
     });
 
+    filterPerAutor.addEventListener("click", () => {
+      cardContainer.innerHTML = "";
+
+      const filteredVideos = data.sort((a, b) =>
+        a.autor.localeCompare(b.autor)
+      );
+
+      filteredVideos.forEach((video) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+      <img class="card-img" src="${video.image}" alt="${video.name}">
+       <h1>${video.name}</h1>
+       <h2>${video.autor}</h2>
+       <h3>${video.view}</h3>
+       `;
+
+        cardContainer.appendChild(card);
+      });
+    });
+
     // Randomize videos (All filter button)
 
     filterPerView.addEventListener("click", () => {
@@ -234,26 +300,6 @@ fetch("data.json")
         cardContainer.appendChild(card);
       });
     });
-
-    filterPerAutor.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
-      
-      const filteredVideos = data.sort((a, b) => a.autor.localeCompare(b.autor));
-
-      filteredVideos.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
-
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
-
-        cardContainer.appendChild(card);
-      })
-    })
 
     // Shuffles an array (Fisher-Yates algorythm)
     function shuffle(data) {
