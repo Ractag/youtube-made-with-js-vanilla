@@ -138,9 +138,27 @@ header {
 .subscribe-svg,
 .you-svg {
   margin: 1rem 1.8rem;
+
+  width: 24px;
+  height: 24px;
 }
 
 .lateral-menu-text {
   text-align: center;
   font-size: 10px;
+}
+
+.home-img-and-text,
+.shorts-img-and-text,
+.subscriptions-img-and-text,
+.you-img-and-text {
+  margin: 0 0.5rem;
+}
+
+.home-img-and-text:hover,
+.shorts-img-and-text:hover,
+.subscriptions-img-and-text:hover,
+.you-img-and-text:hover {
+  border-radius: 20%;
+  background-color: #272727;
 }
