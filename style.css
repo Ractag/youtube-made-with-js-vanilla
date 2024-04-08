@@ -110,6 +110,7 @@ header {
   display: flex;
   justify-content: left;
   gap: 1rem;
+  margin-left: 1.2rem;
   margin-bottom: 2rem;
 }
 
@@ -126,4 +127,20 @@ header {
   border: none;
   font-size: small;
   font-weight: bold;
+}
+
+.lateral-menu-and-card-container {
+  display: flex;
+}
+
+.home-svg,
+.shorts-svg,
+.subscribe-svg,
+.you-svg {
+  margin: 1rem 1.8rem;
+}
+
+.lateral-menu-text {
+  text-align: center;
+  font-size: 10px;
 }
