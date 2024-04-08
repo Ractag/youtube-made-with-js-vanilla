@@ -1,51 +1,55 @@
-const menuBurgerImg = document.createElement("img");
-menuBurgerImg.className = "menu-burger-img";
-menuBurgerImg.src = "assets/images/menu-burger.png";
+// create HTML elements
+function createHTMLElement(node, className, parent, src = null) {
+  const element = document.createElement(node);
+  element.classList.add(className);
+  if (node === "img" && src !== null) {
+    element.src = src;
+  }
+  parent.appendChild(element);
+}
 
-const menuBurgerDiv = document.querySelector(".menu-burger");
-menuBurgerDiv.appendChild(menuBurgerImg);
-
-const ytLogoImg = document.createElement("img");
-ytLogoImg.className = "yt-logo";
-ytLogoImg.src = "assets/images/youtube-logo.png";
-
-const ytLogoDiv = document.querySelector(".logo-yt");
-ytLogoDiv.appendChild(ytLogoImg);
-
-const micImg = document.createElement("img");
-micImg.className = "mic-img";
-micImg.src = "assets/images/microphone.png";
-
-const micImgDiv = document.querySelector(".mic-img-div");
-micImgDiv.appendChild(micImg);
-
-const camImg = document.createElement("img");
-camImg.className = "cam-img";
-camImg.src = "assets/images/video-camera.png";
-
-const camImgDiv = document.querySelector(".cam-img-div");
-camImgDiv.appendChild(camImg);
-
-const notifImg = document.createElement("img");
-notifImg.className = "notif-img";
-notifImg.src = "assets/images/notification.png";
-
-const notifImgDiv = document.querySelector(".notif-img-div");
-notifImgDiv.appendChild(notifImg);
-
-const profilePicIcon = document.createElement("img");
-profilePicIcon.className = "profile-picture-icon";
-profilePicIcon.src = "assets/images/user.png";
-
-const profilePicIconDiv = document.querySelector(".profile-picture-icon-div");
-profilePicIconDiv.appendChild(profilePicIcon);
-
-const searchBtnIcon = document.createElement("img");
-searchBtnIcon.className = "search-btn-icon";
-searchBtnIcon.src = "assets/images/search.png";
-
-const searchBtnDiv = document.querySelector(".search-btn");
-searchBtnDiv.appendChild(searchBtnIcon);
+createHTMLElement(
+  "img",
+  "menu-burger-img",
+  document.querySelector(".menu-burger"),
+  "assets/images/menu-burger.png"
+);
+createHTMLElement(
+  "img",
+  "youtube-logo",
+  document.querySelector(".logo-youtube"),
+  "assets/images/youtube-logo.png"
+);
+createHTMLElement(
+  "img",
+  "mic-img",
+  document.querySelector(".mic-img-div"),
+  "assets/images/microphone.png"
+);
+createHTMLElement(
+  "img",
+  "cam-img",
+  document.querySelector(".cam-img-div"),
+  "assets/images/video-camera.png"
+);
+createHTMLElement(
+  "img",
+  "notif-img",
+  document.querySelector(".notif-img-div"),
+  "assets/images/notification.png"
+);
+createHTMLElement(
+  "img",
+  "profile-picture-icon",
+  document.querySelector(".profile-picture-icon-div"),
+  "assets/images/user.png"
+);
+createHTMLElement(
+  "img",
+  "search-btn-icon",
+  document.querySelector(".search-btn"),
+  "assets/images/search.png"
+);
 
 const cardContainer = document.querySelector(".card-container");
 fetch("data.json")
