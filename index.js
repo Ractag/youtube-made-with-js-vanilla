@@ -1,4 +1,103 @@
 async function main() {
+  // create HTML elements
+  function createHTMLElement(node, className, parent, src = null) {
+    const element = document.createElement(node);
+    element.classList.add(className);
+    if (node === "img" && src !== null) {
+      element.src = src;
+    }
+    parent.appendChild(element);
+  }
+
+  // Navigation ba
+  createHTMLElement(
+    "img",
+    "menu-burger-img",
+    document.querySelector(".menu-burger"),
+    "assets/images/menu-burger.png"
+  );
+  createHTMLElement(
+    "img",
+    "youtube-logo",
+    document.querySelector(".logo-youtube"),
+    "assets/images/youtube-logo.png"
+  );
+  createHTMLElement(
+    "img",
+    "mic-img",
+    document.querySelector(".mic-img-div"),
+    "assets/images/microphone.png"
+  );
+  createHTMLElement(
+    "img",
+    "cam-img",
+    document.querySelector(".cam-img-div"),
+    "assets/images/video-camera.png"
+  );
+  createHTMLElement(
+    "img",
+    "notif-img",
+    document.querySelector(".notif-img-div"),
+    "assets/images/notification.png"
+  );
+  createHTMLElement(
+    "img",
+    "profile-picture-icon",
+    document.querySelector(".profile-picture-icon-div"),
+    "assets/images/user.png"
+  );
+  createHTMLElement(
+    "img",
+    "search-btn-icon",
+    document.querySelector(".search-btn"),
+    "assets/images/search.png"
+  );
+  // Lateral men
+  createHTMLElement(
+    "div",
+    "home-img-and-text",
+    document.querySelector(".lateral-menu")
+  );
+  createHTMLElement(
+    "img",
+    "home-svg",
+    document.querySelector(".home-img-and-text"),
+    "assets/images/bouton-daccueil.jpg"
+  );
+  createHTMLElement(
+    "div",
+    "shorts-img-and-text",
+    document.querySelector(".lateral-menu")
+  );
+  createHTMLElement(
+    "img",
+    "shorts-svg",
+    document.querySelector(".shorts-img-and-text"),
+    "assets/images/shorts.png"
+  );
+  createHTMLElement(
+    "div",
+    "subscriptions-img-and-text",
+    document.querySelector(".lateral-menu")
+  );
+  createHTMLElement(
+    "img",
+    "subscribe-svg",
+    document.querySelector(".subscriptions-img-and-text"),
+    "assets/images/subscription.png"
+  );
+  createHTMLElement(
+    "div",
+    "you-img-and-text",
+    document.querySelector(".lateral-menu")
+  );
+  createHTMLElement(
+    "img",
+    "you-svg",
+    document.querySelector(".you-img-and-text"),
+    "assets/images/you.png"
+  );
+
   // fetch data
   async function getData() {
     const response = await fetch("data.json");
