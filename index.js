@@ -1,3 +1,23 @@
+import { getData } from "/fetchData.js";
+
+document.addEventListener("DOMContentLoaded", async function createCard() {
+  const data = await getData();
+
+  data.forEach((video) => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+    <img class="card-img" src="${video.image}" alt="${video.name}">
+     <h1>${video.name}</h1>
+     <h2>${video.autor}</h2>
+     <h3>${video.view}</h3>
+     `;
+
+    cardContainer.appendChild(card);
+  });
+});
+
 // create HTML elements
 function createHTMLElement(node, className, parent, src = null) {
   const element = document.createElement(node);
@@ -105,19 +125,19 @@ fetch("data.json")
   .then((response) => response.json())
   .then((data) => {
     // card creation
-    data.forEach((video) => {
-      const card = document.createElement("div");
-      card.className = "card";
+    // data.forEach((video) => {
+    //   const card = document.createElement("div");
+    //   card.className = "card";
 
-      card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+    //   card.innerHTML = `
+    //    <img class="card-img" src="${video.image}" alt="${video.name}">
+    //     <h1>${video.name}</h1>
+    //     <h2>${video.autor}</h2>
+    //     <h3>${video.view}</h3>
+    //     `;
 
-      cardContainer.appendChild(card);
-    });
+    //   cardContainer.appendChild(card);
+    // });
     // Listening changes on input and executing on search btn
 
     let inputText = "";
