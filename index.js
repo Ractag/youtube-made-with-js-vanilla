@@ -1,358 +1,393 @@
-import { getData } from "/fetchData.js";
+async function main() {
+  // fetch data
+  async function getData() {
+    const response = await fetch("data.json");
+    const data = await response.json();
+    return data;
+  }
 
-document.addEventListener("DOMContentLoaded", async function createCard() {
+  // store data
   const data = await getData();
 
-  data.forEach((video) => {
+  // select card container from HTML
+  const cardContainer = document.querySelector(".card-container");
+
+  // create video function
+  function createCard(video) {
     const card = document.createElement("div");
     card.className = "card";
 
     card.innerHTML = `
     <img class="card-img" src="${video.image}" alt="${video.name}">
-     <h1>${video.name}</h1>
-     <h2>${video.autor}</h2>
-     <h3>${video.view}</h3>
-     `;
+    <h1>${video.name}</h1>
+    <h2>${video.autor}</h2>
+    <h3>${video.view}</h3>
+    `;
 
     cardContainer.appendChild(card);
-  });
-});
-
-// create HTML elements
-function createHTMLElement(node, className, parent, src = null) {
-  const element = document.createElement(node);
-  element.classList.add(className);
-  if (node === "img" && src !== null) {
-    element.src = src;
   }
-  parent.appendChild(element);
+
+  // display videos
+  data.forEach((video) => createCard(video));
 }
 
-// Navigation bar
+document.addEventListener("DOMContentLoaded", main);
 
-createHTMLElement(
-  "img",
-  "menu-burger-img",
-  document.querySelector(".menu-burger"),
-  "assets/images/menu-burger.png"
-);
-createHTMLElement(
-  "img",
-  "youtube-logo",
-  document.querySelector(".logo-youtube"),
-  "assets/images/youtube-logo.png"
-);
-createHTMLElement(
-  "img",
-  "mic-img",
-  document.querySelector(".mic-img-div"),
-  "assets/images/microphone.png"
-);
-createHTMLElement(
-  "img",
-  "cam-img",
-  document.querySelector(".cam-img-div"),
-  "assets/images/video-camera.png"
-);
-createHTMLElement(
-  "img",
-  "notif-img",
-  document.querySelector(".notif-img-div"),
-  "assets/images/notification.png"
-);
-createHTMLElement(
-  "img",
-  "profile-picture-icon",
-  document.querySelector(".profile-picture-icon-div"),
-  "assets/images/user.png"
-);
-createHTMLElement(
-  "img",
-  "search-btn-icon",
-  document.querySelector(".search-btn"),
-  "assets/images/search.png"
-);
+// import { getData } from "/fetchData.js";
 
-// Lateral menu
+// document.addEventListener("DOMContentLoaded", async function createCard() {
+//   const data = await getData();
 
-createHTMLElement(
-  "div",
-  "home-img-and-text",
-  document.querySelector(".lateral-menu")
-);
-createHTMLElement(
-  "img",
-  "home-svg",
-  document.querySelector(".home-img-and-text"),
-  "assets/images/bouton-daccueil.jpg"
-);
-createHTMLElement(
-  "div",
-  "shorts-img-and-text",
-  document.querySelector(".lateral-menu")
-);
-createHTMLElement(
-  "img",
-  "shorts-svg",
-  document.querySelector(".shorts-img-and-text"),
-  "assets/images/shorts.png"
-);
-createHTMLElement(
-  "div",
-  "subscriptions-img-and-text",
-  document.querySelector(".lateral-menu")
-);
-createHTMLElement(
-  "img",
-  "subscribe-svg",
-  document.querySelector(".subscriptions-img-and-text"),
-  "assets/images/subscription.png"
-);
-createHTMLElement(
-  "div",
-  "you-img-and-text",
-  document.querySelector(".lateral-menu")
-);
-createHTMLElement(
-  "img",
-  "you-svg",
-  document.querySelector(".you-img-and-text"),
-  "assets/images/you.png"
-);
+//   data.forEach((video) => {
+//     const card = document.createElement("div");
+//     card.className = "card";
 
-const cardContainer = document.querySelector(".card-container");
-fetch("data.json")
-  .then((response) => response.json())
-  .then((data) => {
-    // card creation
-    // data.forEach((video) => {
-    //   const card = document.createElement("div");
-    //   card.className = "card";
+//     card.innerHTML = `
+//     <img class="card-img" src="${video.image}" alt="${video.name}">
+//      <h1>${video.name}</h1>
+//      <h2>${video.autor}</h2>
+//      <h3>${video.view}</h3>
+//      `;
 
-    //   card.innerHTML = `
-    //    <img class="card-img" src="${video.image}" alt="${video.name}">
-    //     <h1>${video.name}</h1>
-    //     <h2>${video.autor}</h2>
-    //     <h3>${video.view}</h3>
-    //     `;
+//     cardContainer.appendChild(card);
+//   });
+// });
 
-    //   cardContainer.appendChild(card);
-    // });
-    // Listening changes on input and executing on search btn
+// // create HTML elements
+// function createHTMLElement(node, className, parent, src = null) {
+//   const element = document.createElement(node);
+//   element.classList.add(className);
+//   if (node === "img" && src !== null) {
+//     element.src = src;
+//   }
+//   parent.appendChild(element);
+// }
 
-    let inputText = "";
-    const searchBar = document.querySelector(".search-input");
-    searchBar.addEventListener("change", (event) => {
-      inputText = event.target.value;
-    });
+// // Navigation bar
 
-    const searchBtn = document.querySelector(".search-btn");
-    searchBtn.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+// createHTMLElement(
+//   "img",
+//   "menu-burger-img",
+//   document.querySelector(".menu-burger"),
+//   "assets/images/menu-burger.png"
+// );
+// createHTMLElement(
+//   "img",
+//   "youtube-logo",
+//   document.querySelector(".logo-youtube"),
+//   "assets/images/youtube-logo.png"
+// );
+// createHTMLElement(
+//   "img",
+//   "mic-img",
+//   document.querySelector(".mic-img-div"),
+//   "assets/images/microphone.png"
+// );
+// createHTMLElement(
+//   "img",
+//   "cam-img",
+//   document.querySelector(".cam-img-div"),
+//   "assets/images/video-camera.png"
+// );
+// createHTMLElement(
+//   "img",
+//   "notif-img",
+//   document.querySelector(".notif-img-div"),
+//   "assets/images/notification.png"
+// );
+// createHTMLElement(
+//   "img",
+//   "profile-picture-icon",
+//   document.querySelector(".profile-picture-icon-div"),
+//   "assets/images/user.png"
+// );
+// createHTMLElement(
+//   "img",
+//   "search-btn-icon",
+//   document.querySelector(".search-btn"),
+//   "assets/images/search.png"
+// );
 
-      const formatedSearch = inputText.toUpperCase().trim();
-      const filterVideoList = data.filter((video) => {
-        return video.name.toUpperCase().includes(formatedSearch);
-      });
+// // Lateral menu
 
-      filterVideoList.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+// createHTMLElement(
+//   "div",
+//   "home-img-and-text",
+//   document.querySelector(".lateral-menu")
+// );
+// createHTMLElement(
+//   "img",
+//   "home-svg",
+//   document.querySelector(".home-img-and-text"),
+//   "assets/images/bouton-daccueil.jpg"
+// );
+// createHTMLElement(
+//   "div",
+//   "shorts-img-and-text",
+//   document.querySelector(".lateral-menu")
+// );
+// createHTMLElement(
+//   "img",
+//   "shorts-svg",
+//   document.querySelector(".shorts-img-and-text"),
+//   "assets/images/shorts.png"
+// );
+// createHTMLElement(
+//   "div",
+//   "subscriptions-img-and-text",
+//   document.querySelector(".lateral-menu")
+// );
+// createHTMLElement(
+//   "img",
+//   "subscribe-svg",
+//   document.querySelector(".subscriptions-img-and-text"),
+//   "assets/images/subscription.png"
+// );
+// createHTMLElement(
+//   "div",
+//   "you-img-and-text",
+//   document.querySelector(".lateral-menu")
+// );
+// createHTMLElement(
+//   "img",
+//   "you-svg",
+//   document.querySelector(".you-img-and-text"),
+//   "assets/images/you.png"
+// );
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+// const cardContainer = document.querySelector(".card-container");
+// fetch("data.json")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     // card creation
+//     // data.forEach((video) => {
+//     //   const card = document.createElement("div");
+//     //   card.className = "card";
 
-        cardContainer.appendChild(card);
-      });
-    });
+//     //   card.innerHTML = `
+//     //    <img class="card-img" src="${video.image}" alt="${video.name}">
+//     //     <h1>${video.name}</h1>
+//     //     <h2>${video.autor}</h2>
+//     //     <h3>${video.view}</h3>
+//     //     `;
 
-    // Filter buttons
+//     //   cardContainer.appendChild(card);
+//     // });
+//     // Listening changes on input and executing on search btn
 
-    const noFilterActive = document.querySelector(".all");
-    const filterButtonCute = document.querySelector(".cute");
-    const filterButtonGoofy = document.querySelector(".goofy");
-    const filterButtonLove = document.querySelector(".love");
-    const filterButtonGang = document.querySelector(".gang");
-    const filterPerView = document.querySelector(".view");
-    const filterPerAutor = document.querySelector(".autor");
+//     let inputText = "";
+//     const searchBar = document.querySelector(".search-input");
+//     searchBar.addEventListener("change", (event) => {
+//       inputText = event.target.value;
+//     });
 
-    noFilterActive.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+//     const searchBtn = document.querySelector(".search-btn");
+//     searchBtn.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
 
-      const shuffledData = shuffle(data);
+//       const formatedSearch = inputText.toUpperCase().trim();
+//       const filterVideoList = data.filter((video) => {
+//         return video.name.toUpperCase().includes(formatedSearch);
+//       });
 
-      shuffledData.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+//       filterVideoList.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
 
-        cardContainer.appendChild(card);
-      });
-    });
+//         cardContainer.appendChild(card);
+//       });
+//     });
 
-    filterButtonCute.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+//     // Filter buttons
 
-      const filteredVideos = data.filter((video) => {
-        return video.filter.includes("cute");
-      });
+//     const noFilterActive = document.querySelector(".all");
+//     const filterButtonCute = document.querySelector(".cute");
+//     const filterButtonGoofy = document.querySelector(".goofy");
+//     const filterButtonLove = document.querySelector(".love");
+//     const filterButtonGang = document.querySelector(".gang");
+//     const filterPerView = document.querySelector(".view");
+//     const filterPerAutor = document.querySelector(".autor");
 
-      filteredVideos.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+//     noFilterActive.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+//       const shuffledData = shuffle(data);
 
-        cardContainer.appendChild(card);
-      });
-    });
+//       shuffledData.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
 
-    filterButtonGoofy.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
 
-      const filteredVideos = data.filter((video) => {
-        return video.filter.includes("goofy");
-      });
+//         cardContainer.appendChild(card);
+//       });
+//     });
 
-      filteredVideos.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+//     filterButtonCute.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+//       const filteredVideos = data.filter((video) => {
+//         return video.filter.includes("cute");
+//       });
 
-        cardContainer.appendChild(card);
-      });
-    });
+//       filteredVideos.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
 
-    filterButtonLove.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
 
-      const filteredVideos = data.filter((video) => {
-        return video.filter.includes("love");
-      });
+//         cardContainer.appendChild(card);
+//       });
+//     });
 
-      filteredVideos.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+//     filterButtonGoofy.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+//       const filteredVideos = data.filter((video) => {
+//         return video.filter.includes("goofy");
+//       });
 
-        cardContainer.appendChild(card);
-      });
-    });
+//       filteredVideos.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
 
-    filterButtonGang.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
 
-      const filteredVideos = data.filter((video) => {
-        return video.filter.includes("gang");
-      });
+//         cardContainer.appendChild(card);
+//       });
+//     });
 
-      filteredVideos.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+//     filterButtonLove.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+//       const filteredVideos = data.filter((video) => {
+//         return video.filter.includes("love");
+//       });
 
-        cardContainer.appendChild(card);
-      });
-    });
+//       filteredVideos.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
 
-    filterPerAutor.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
 
-      const filteredVideos = data.sort((a, b) =>
-        a.autor.localeCompare(b.autor)
-      );
+//         cardContainer.appendChild(card);
+//       });
+//     });
 
-      filteredVideos.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+//     filterButtonGang.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+//       const filteredVideos = data.filter((video) => {
+//         return video.filter.includes("gang");
+//       });
 
-        cardContainer.appendChild(card);
-      });
-    });
+//       filteredVideos.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
 
-    // Randomize videos (All filter button)
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
 
-    filterPerView.addEventListener("click", () => {
-      cardContainer.innerHTML = "";
+//         cardContainer.appendChild(card);
+//       });
+//     });
 
-      const filteredVideos = data.sort((a, b) => {
-        const regex = /\d+/;
-        const viewA = parseInt(a.view.match(regex)[0]);
-        const viewB = parseInt(b.view.match(regex)[0]);
-        return viewB - viewA;
-      });
+//     filterPerAutor.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
 
-      filteredVideos.forEach((video) => {
-        const card = document.createElement("div");
-        card.className = "card";
+//       const filteredVideos = data.sort((a, b) =>
+//         a.autor.localeCompare(b.autor)
+//       );
 
-        card.innerHTML = `
-      <img class="card-img" src="${video.image}" alt="${video.name}">
-       <h1>${video.name}</h1>
-       <h2>${video.autor}</h2>
-       <h3>${video.view}</h3>
-       `;
+//       filteredVideos.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
 
-        cardContainer.appendChild(card);
-      });
-    });
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
 
-    // Shuffles an array (Fisher-Yates algorythm)
-    function shuffle(data) {
-      let currentIndex = data.length;
+//         cardContainer.appendChild(card);
+//       });
+//     });
 
-      // this while loop means if there is still elements in the array, it will iterate on it until there is no more
-      while (currentIndex != 0) {
-        // randomize the index of "currenIndex"
-        let randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
+//     // Randomize videos (All filter button)
 
-        // And swap it with the current element.
-        [data[currentIndex], data[randomIndex]] = [
-          data[randomIndex],
-          data[currentIndex],
-        ];
-      }
-      return data;
-    }
-  });
+//     filterPerView.addEventListener("click", () => {
+//       cardContainer.innerHTML = "";
+
+//       const filteredVideos = data.sort((a, b) => {
+//         const regex = /\d+/;
+//         const viewA = parseInt(a.view.match(regex)[0]);
+//         const viewB = parseInt(b.view.match(regex)[0]);
+//         return viewB - viewA;
+//       });
+
+//       filteredVideos.forEach((video) => {
+//         const card = document.createElement("div");
+//         card.className = "card";
+
+//         card.innerHTML = `
+//       <img class="card-img" src="${video.image}" alt="${video.name}">
+//        <h1>${video.name}</h1>
+//        <h2>${video.autor}</h2>
+//        <h3>${video.view}</h3>
+//        `;
+
+//         cardContainer.appendChild(card);
+//       });
+//     });
+
+//     // Shuffles an array (Fisher-Yates algorythm)
+//     function shuffle(data) {
+//       let currentIndex = data.length;
+
+//       // this while loop means if there is still elements in the array, it will iterate on it until there is no more
+//       while (currentIndex != 0) {
+//         // randomize the index of "currenIndex"
+//         let randomIndex = Math.floor(Math.random() * currentIndex);
+//         currentIndex--;
+
+//         // And swap it with the current element.
+//         [data[currentIndex], data[randomIndex]] = [
+//           data[randomIndex],
+//           data[currentIndex],
+//         ];
+//       }
+//       return data;
+//     }
+//   });
