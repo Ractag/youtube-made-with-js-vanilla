@@ -9,7 +9,7 @@ async function main() {
     parent.appendChild(element);
   }
 
-  // Navigation ba
+  // Navigation bar
   createHTMLElement(
     "img",
     "menu-burger-img",
@@ -111,7 +111,7 @@ async function main() {
   // select card container from HTML
   const cardContainer = document.querySelector(".card-container");
 
-  // create video function
+  // create card function
   function createCard(video) {
     const card = document.createElement("div");
     card.className = "card";
@@ -128,131 +128,29 @@ async function main() {
 
   // display videos
   data.forEach((video) => createCard(video));
+
+  //Input search
+  let inputText = "";
+  const searchBar = document.querySelector(".search-input");
+  const searchBtn = document.querySelector(".search-btn");
+
+  searchBar.addEventListener("change", (event) => {
+    inputText = event.target.value;
+  });
+
+  searchBtn.addEventListener("click", () => {
+    cardContainer.innerHTML = "";
+    const formatedSearch = inputText.toUpperCase().trim();
+    const filterVideoList = data.filter((video) =>
+      video.name.toUpperCase().includes(formatedSearch)
+    );
+    filterVideoList.forEach((video) => {
+      createCard(video);
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", main);
-
-// import { getData } from "/fetchData.js";
-
-// document.addEventListener("DOMContentLoaded", async function createCard() {
-//   const data = await getData();
-
-//   data.forEach((video) => {
-//     const card = document.createElement("div");
-//     card.className = "card";
-
-//     card.innerHTML = `
-//     <img class="card-img" src="${video.image}" alt="${video.name}">
-//      <h1>${video.name}</h1>
-//      <h2>${video.autor}</h2>
-//      <h3>${video.view}</h3>
-//      `;
-
-//     cardContainer.appendChild(card);
-//   });
-// });
-
-// // create HTML elements
-// function createHTMLElement(node, className, parent, src = null) {
-//   const element = document.createElement(node);
-//   element.classList.add(className);
-//   if (node === "img" && src !== null) {
-//     element.src = src;
-//   }
-//   parent.appendChild(element);
-// }
-
-// // Navigation bar
-
-// createHTMLElement(
-//   "img",
-//   "menu-burger-img",
-//   document.querySelector(".menu-burger"),
-//   "assets/images/menu-burger.png"
-// );
-// createHTMLElement(
-//   "img",
-//   "youtube-logo",
-//   document.querySelector(".logo-youtube"),
-//   "assets/images/youtube-logo.png"
-// );
-// createHTMLElement(
-//   "img",
-//   "mic-img",
-//   document.querySelector(".mic-img-div"),
-//   "assets/images/microphone.png"
-// );
-// createHTMLElement(
-//   "img",
-//   "cam-img",
-//   document.querySelector(".cam-img-div"),
-//   "assets/images/video-camera.png"
-// );
-// createHTMLElement(
-//   "img",
-//   "notif-img",
-//   document.querySelector(".notif-img-div"),
-//   "assets/images/notification.png"
-// );
-// createHTMLElement(
-//   "img",
-//   "profile-picture-icon",
-//   document.querySelector(".profile-picture-icon-div"),
-//   "assets/images/user.png"
-// );
-// createHTMLElement(
-//   "img",
-//   "search-btn-icon",
-//   document.querySelector(".search-btn"),
-//   "assets/images/search.png"
-// );
-
-// // Lateral menu
-
-// createHTMLElement(
-//   "div",
-//   "home-img-and-text",
-//   document.querySelector(".lateral-menu")
-// );
-// createHTMLElement(
-//   "img",
-//   "home-svg",
-//   document.querySelector(".home-img-and-text"),
-//   "assets/images/bouton-daccueil.jpg"
-// );
-// createHTMLElement(
-//   "div",
-//   "shorts-img-and-text",
-//   document.querySelector(".lateral-menu")
-// );
-// createHTMLElement(
-//   "img",
-//   "shorts-svg",
-//   document.querySelector(".shorts-img-and-text"),
-//   "assets/images/shorts.png"
-// );
-// createHTMLElement(
-//   "div",
-//   "subscriptions-img-and-text",
-//   document.querySelector(".lateral-menu")
-// );
-// createHTMLElement(
-//   "img",
-//   "subscribe-svg",
-//   document.querySelector(".subscriptions-img-and-text"),
-//   "assets/images/subscription.png"
-// );
-// createHTMLElement(
-//   "div",
-//   "you-img-and-text",
-//   document.querySelector(".lateral-menu")
-// );
-// createHTMLElement(
-//   "img",
-//   "you-svg",
-//   document.querySelector(".you-img-and-text"),
-//   "assets/images/you.png"
-// );
 
 // const cardContainer = document.querySelector(".card-container");
 // fetch("data.json")
