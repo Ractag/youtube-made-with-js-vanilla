@@ -148,69 +148,39 @@ async function main() {
       createCard(video);
     });
   });
+
+  // Filters function
+  function FilterVideo(filter) {
+    cardContainer.innerHTML = "";
+
+    if (filter === "all") {
+      data.forEach((video) => createCard(video));
+    } else {
+      const filteredVideoList = data.filter((video) => video.filter === filter);
+      filteredVideoList.forEach((video) => createCard(video));
+    }
+  }
+
+  // Filter buttons
+
+  const noFilterActive = document.querySelector(".all");
+  const filterButtonCute = document.querySelector(".cute");
+  const filterButtonGoofy = document.querySelector(".goofy");
+  const filterButtonLove = document.querySelector(".love");
+  const filterButtonGang = document.querySelector(".gang");
+  const filterPerView = document.querySelector(".view");
+  const filterPerAutor = document.querySelector(".autor");
+
+  noFilterActive.addEventListener("click", () => FilterVideo("all"));
+  filterButtonCute.addEventListener("click", () => FilterVideo("cute"));
+  filterButtonGoofy.addEventListener("click", () => FilterVideo("goofy"));
+  filterButtonLove.addEventListener("click", () => FilterVideo("love"));
+  filterButtonGang.addEventListener("click", () => FilterVideo("gang"));
+  filterPerView.addEventListener("click", () => FilterVideo("view"));
+  filterPerAutor.addEventListener("click", () => FilterVideo("autor"));
 }
 
 document.addEventListener("DOMContentLoaded", main);
-
-// const cardContainer = document.querySelector(".card-container");
-// fetch("data.json")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     // card creation
-//     // data.forEach((video) => {
-//     //   const card = document.createElement("div");
-//     //   card.className = "card";
-
-//     //   card.innerHTML = `
-//     //    <img class="card-img" src="${video.image}" alt="${video.name}">
-//     //     <h1>${video.name}</h1>
-//     //     <h2>${video.autor}</h2>
-//     //     <h3>${video.view}</h3>
-//     //     `;
-
-//     //   cardContainer.appendChild(card);
-//     // });
-//     // Listening changes on input and executing on search btn
-
-//     let inputText = "";
-//     const searchBar = document.querySelector(".search-input");
-//     searchBar.addEventListener("change", (event) => {
-//       inputText = event.target.value;
-//     });
-
-//     const searchBtn = document.querySelector(".search-btn");
-//     searchBtn.addEventListener("click", () => {
-//       cardContainer.innerHTML = "";
-
-//       const formatedSearch = inputText.toUpperCase().trim();
-//       const filterVideoList = data.filter((video) => {
-//         return video.name.toUpperCase().includes(formatedSearch);
-//       });
-
-//       filterVideoList.forEach((video) => {
-//         const card = document.createElement("div");
-//         card.className = "card";
-
-//         card.innerHTML = `
-//       <img class="card-img" src="${video.image}" alt="${video.name}">
-//        <h1>${video.name}</h1>
-//        <h2>${video.autor}</h2>
-//        <h3>${video.view}</h3>
-//        `;
-
-//         cardContainer.appendChild(card);
-//       });
-//     });
-
-//     // Filter buttons
-
-//     const noFilterActive = document.querySelector(".all");
-//     const filterButtonCute = document.querySelector(".cute");
-//     const filterButtonGoofy = document.querySelector(".goofy");
-//     const filterButtonLove = document.querySelector(".love");
-//     const filterButtonGang = document.querySelector(".gang");
-//     const filterPerView = document.querySelector(".view");
-//     const filterPerAutor = document.querySelector(".autor");
 
 //     noFilterActive.addEventListener("click", () => {
 //       cardContainer.innerHTML = "";
@@ -370,21 +340,5 @@ document.addEventListener("DOMContentLoaded", main);
 //     });
 
 //     // Shuffles an array (Fisher-Yates algorythm)
-//     function shuffle(data) {
-//       let currentIndex = data.length;
 
-//       // this while loop means if there is still elements in the array, it will iterate on it until there is no more
-//       while (currentIndex != 0) {
-//         // randomize the index of "currenIndex"
-//         let randomIndex = Math.floor(Math.random() * currentIndex);
-//         currentIndex--;
-
-//         // And swap it with the current element.
-//         [data[currentIndex], data[randomIndex]] = [
-//           data[randomIndex],
-//           data[currentIndex],
-//         ];
-//       }
-//       return data;
-//     }
 //   });
